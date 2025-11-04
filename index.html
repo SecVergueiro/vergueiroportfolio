@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vergueiro | Portfólio</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/shadow.png" />
+    <link rel="shortcut icon" href="./img/shadow.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/shadow.png" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="particulas"></div>
+
+    <nav class="navegacao">
+      <ul class="menu">
+        <li><a href="#inicio" class="menu-link">Início</a></li>
+        <li><a href="#sobre" class="menu-link">Sobre</a></li>
+        <li><a href="#projetos" class="menu-link">Projetos</a></li>
+        <li><a href="#contatos" class="menu-link">Contato</a></li>
+      </ul>
+    </nav>
+
+    <main id="inicio" class="cabecalho">
+      <img
+        src="./img/isaquevergueiropic.png"
+        alt="Foto de Isaque Vergueiro"
+        class="foto-perfil"
+      />
+      <h1>Isaque Vergueiro</h1>
+      <p class="cabecalho-subtitulo">Desenvolvedor Full-Stack JR</p>
+    </main>
+
+    <section id="sobre" class="sobre">
+      <h2 class="sobre-titulo">Sobre Mim</h2>
+      <div class="sobre-caixa">
+        <p class="sobre-paragrafo">
+          Sou Isaque Vergueiro, desenvolvedor Full-Stack Jr formado em Análise e
+          Desenvolvimento de Sistemas. Trabalho com HTML, CSS,
+          JavaScript/TypeScript, React e Node.js (Express), com experiência em
+          APIs REST, PostgreSQL e deploy. Em projetos, entrego soluções que
+          conectam front-end e back-end, priorizando usabilidade, código
+          organizado e resultados práticos. Atualmente me aprofundo em Angular e
+          em boas práticas de arquitetura e testes.
+        </p>
+      </div>
+    </section>
+
+    <section id="projetos" class="projetos">
+      <h2 class="projetos-titulo">Meus Projetos</h2>
+
+      <div class="projetos-controles">
+        <input
+          id="filtro-tec"
+          placeholder="Filtrar por tecnologia (ex: React)"
+          aria-label="Filtrar projetos por tecnologia"
+        />
+        <button id="ver-mais" class="botao-pequeno" aria-pressed="false">
+          Ver mais
+        </button>
+      </div>
+
+      <div class="projetos-caixa" aria-live="polite"></div>
+    </section>
+
+    <div
+      id="projeto-modal"
+      class="modal hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-hidden="true"
+      aria-labelledby="modal-titulo"
+    >
+      <div class="modal-conteudo" role="document">
+        <button id="modal-close" aria-label="Fechar modal" class="modal-fechar">
+          &times;
+        </button>
+
+        <div class="modal-carousel" id="modal-carousel">
+          <div class="carousel-container">
+            <button
+              id="modal-prev"
+              class="carousel-btn carousel-prev"
+              aria-label="Imagem anterior"
+              style="display: none"
+            >
+              &#8249;
+            </button>
+
+            <img
+              id="modal-imagem"
+              class="modal-imagem"
+              src=""
+              alt="Preview do projeto"
+            />
+
+            <button
+              id="modal-next"
+              class="carousel-btn carousel-next"
+              aria-label="Próxima imagem"
+              style="display: none"
+            >
+              &#8250;
+            </button>
+          </div>
+          <div
+            id="modal-carousel-contador"
+            class="carousel-contador"
+            style="display: none"
+          ></div>
+        </div>
+        <h3 id="modal-titulo"></h3>
+        <p id="modal-descricao"></p>
+        <p><strong>Tecnologias:</strong> <span id="modal-tecnologias"></span></p>
+
+        <div class="modal-links">
+          <a
+            id="modal-hospedagem"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Abrir Projeto</a
+          >
+          <a
+            id="modal-repo"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="botao-projeto secundario"
+            >Repositório</a
+          >
+        </div>
+      </div>
+      </div>
+    <section id="contatos" class="contatos">
+      <h2 class="contatos-titulo">Vamos Conversar!</h2>
+      <form class="formulario-contato" onsubmit="enviarWhats(event)">
+        <div class="grupo-form">
+          <input
+            id="nome"
+            class="campo-form"
+            type="text"
+            placeholder="Seu nome"
+            required
+          />
+        </div>
+        <div class="grupo-form">
+          <textarea
+            id="mensagem"
+            class="campo-form"
+            rows="5"
+            placeholder="Sua mensagem"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="botao-form">Enviar Mensagem (WhatsApp)</button>
+      </form>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

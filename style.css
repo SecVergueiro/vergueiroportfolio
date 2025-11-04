@@ -1,0 +1,686 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primaria: #4f46e5;
+  --secundaria: #7c3aed;
+  --escuro: #0f172a;
+  --maisEscuro: #0a0f1c;
+  --claro: #e2e8f0;
+  --vidro: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: var(--escuro);
+  color: var(--claro);
+}
+
+.navegacao {
+  position: fixed;
+  top: 0;
+  background: rgba(15, 23, 42, 0.8);
+  width: 100%;
+  z-index: 100;
+  padding: 1.5rem;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: var(--claro);
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.menu-link::after {
+  content: "";
+  height: 2px;
+  width: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(90deg, var(--primaria), var(--secundaria));
+  transition: width 0.4s ease;
+}
+
+.menu-link:hover::after {
+  width: 100%;
+}
+
+.cabecalho {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.foto-perfil {
+  width: 350px;
+  height: 350px;
+  box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+  border-radius: 50%;
+  border: 4px solid var(--vidro);
+  animation: flutuar 5s ease-in-out infinite;
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: var(--primaria);
+  font-weight: bold;
+  margin: 20px;
+}
+
+.cabecalho-subtitulo {
+  font-size: 1.5rem;
+  color: var(--claro);
+}
+
+.sobre {
+  padding: 6rem 2rem;
+}
+
+.sobre-titulo {
+  font-size: 3rem;
+  color: var(--claro);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sobre-caixa {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 16px;
+  border: 1px solid var(--vidro);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sobre-paragrafo {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.projetos {
+  padding: 6rem 2rem;
+}
+
+.projetos-caixa {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== Card: layout base ===== */
+.projetos-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--vidro);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+
+  /* nova estrutura: column flex para fixar ações no rodapé */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.projetos-titulo {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+.projetos-card:hover {
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.2);
+  transform: translateY(-10px) scale(1.03);
+}
+
+.projetos-imagem {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  flex: 0 0 auto;
+}
+
+.info-projetos {
+  margin-bottom: 5px;
+}
+
+.paragrafo-projetos {
+  color: rgba(226, 232, 240, 0.9);
+  line-height: 1.25rem;
+  margin: 0;
+}
+
+/* caixa que contém título/descrição/tags/ações — agora é flex column */
+.caixa-textos-projeto {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 0.6rem;
+  padding-bottom: 1rem; /* espaço para ações fixadas */
+}
+
+/* contatos */
+.contatos {
+  padding: 6rem 2rem;
+}
+
+.contatos-titulo {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+}
+
+.formulario-contato {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(5px);
+  padding: 2rem;
+  border: 1px solid var(--vidro);
+  border-radius: 16px;
+}
+
+.grupo-form {
+  margin-bottom: 1.5rem;
+}
+
+.campo-form {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: var(--claro);
+  border: 1px solid var(--vidro);
+  outline: none;
+}
+
+.campo-form:focus {
+  border-color: var(--secundaria);
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+}
+
+.botao-form {
+  color: var(--claro);
+  background: linear-gradient(45deg, var(--primaria), var(--secundaria));
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  transition: transform 0.6s ease;
+}
+
+.botao-form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+}
+
+.particulas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.5;
+  background: radial-gradient(
+      circle at 10% 20%,
+      var(--primaria) 0%,
+      transparent 20%
+    ),
+    radial-gradient(circle at 90% 80%, var(--secundaria) 0%, transparent 20%),
+    var(--maisEscuro);
+}
+
+@keyframes flutuar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* ===================== Estilos para controles / filtros ===================== */
+.projetos-controles {
+  max-width: 1200px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+#filtro-tec {
+  min-width: 220px;
+  max-width: 420px;
+  width: 45%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--claro);
+  outline: none;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+#filtro-tec::placeholder {
+  color: rgba(226, 232, 240, 0.5);
+}
+
+#filtro-tec:focus {
+  border-color: rgba(124, 58, 237, 0.85);
+  box-shadow: 0 6px 24px rgba(79, 70, 229, 0.08);
+}
+
+/* botão pequeno (Ver mais) */
+.botao-pequeno {
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(
+    90deg,
+    rgba(79, 70, 229, 0.14),
+    rgba(124, 58, 237, 0.12)
+  );
+  color: var(--claro);
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, opacity 0.14s ease;
+}
+.botao-pequeno:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.08);
+}
+.botao-pequeno:active {
+  transform: translateY(-1px);
+}
+
+/* ===================== Tags de tecnologias ===================== */
+/* Reservamos espaço fixo para tags logo acima da área de ações */
+.tags-tecnologias {
+  margin-top: 0.6rem;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  min-height: 36px; /* reserva espaço para evitar saltos de layout */
+  align-items: center;
+}
+.tag-tec {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.09);
+  color: var(--claro);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ===================== Ações do card (botões) ===================== */
+/* A barra de ações fica fixada ao rodapé da caixa de texto do card */
+.acoes-projeto {
+  margin-top: auto; /* empurra a barra para o final do .caixa-textos-projeto */
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 0.6rem;
+  padding-bottom: 0.25rem;
+}
+
+/* botões principais dos cards */
+.botao-projeto {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--primaria), var(--secundaria));
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, opacity 0.14s ease;
+}
+.botao-projeto:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.18);
+}
+
+/* secundário (repositório) */
+.botao-projeto.secundario {
+  background: transparent;
+  color: var(--claro);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-weight: 600;
+}
+.botao-projeto.secundario:hover {
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateY(-2px);
+}
+
+/* botão detalhes simples (texto) */
+.botao-detalhes {
+  background: transparent;
+  border: none;
+  color: rgba(226, 232, 240, 0.9);
+  text-decoration: underline;
+  padding: 0.25rem 0.4rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.botao-detalhes:hover {
+  color: var(--secundaria);
+}
+
+/* garantir foco visível para teclado */
+.botao-projeto:focus,
+.botao-detalhes:focus,
+.botao-pequeno:focus,
+#filtro-tec:focus {
+  outline: 3px solid rgba(124, 58, 237, 0.18);
+  outline-offset: 2px;
+}
+
+/* ===================== Modal (backdrop + conteúdo) ===================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 110;
+  background: rgba(6, 8, 14, 0.6); /* escurece o fundo */
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  padding: 2rem;
+}
+
+/* escondido via classe .hidden (preserve a classe que você já usa) */
+.modal.hidden {
+  display: none;
+}
+
+/* card do modal */
+.modal-conteudo {
+  width: 100%;
+  max-width: 900px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 1rem 1rem 1.4rem;
+  box-shadow: 0 20px 60px rgba(2, 6, 23, 0.6);
+  color: var(--claro);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
+  position: relative;
+  /* permitir que as setas fiquem fora da imagem sem serem cortadas */
+  overflow: visible;
+  
+  /* Adiciona espaço nas laterais para as setas não ficarem
+     coladas nas bordas em telas médias/grandes */
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* imagem do modal (preview maior) */
+.modal-imagem {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 28px rgba(2, 6, 23, 0.6);
+  
+  /* REMOVIDO: cursor de zoom-in */
+  transition: transform 0.3s ease, object-fit 0.3s ease, max-height 0.3s ease;
+}
+
+/* ========== Estilos do carrossel do modal ========== */
+.modal-carousel {
+  margin-top: 0.5rem;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  /* permitir que as setas fiquem fora */
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* padrão: botões sobre a imagem (caso precise) */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--claro);
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  user-select: none;
+  transition: left 0.3s ease, right 0.3s ease; /* Anima a transição */
+}
+.carousel-prev {
+  left: 8px;
+}
+.carousel-next {
+  right: 8px;
+}
+
+.carousel-btn:focus {
+  outline: 3px solid rgba(124, 58, 237, 0.18);
+  outline-offset: 3px;
+}
+
+.carousel-contador {
+  text-align: center;
+  margin-top: 0.45rem;
+  font-size: 0.95rem;
+  color: rgba(226, 232, 240, 0.8);
+}
+
+/* ===== Ajustes específicos quando QUALQUER carrossel está ativo ===== */
+/* adicionamos a classe .carousel-active no elemento #projeto-modal */
+#projeto-modal.carousel-active .modal-imagem {
+  height: 520px;
+  max-height: 75vh;
+  object-fit: contain; /* mostrar tela inteira com espaço */
+}
+
+/* mover as setas PARA FORA da imagem (fora da borda) quando carrossel ativo */
+#projeto-modal.carousel-active .carousel-prev {
+  left: -56px;
+}
+#projeto-modal.carousel-active .carousel-next {
+  right: -56px;
+}
+
+/* se a largura ficar pequena, reduzir deslocamento das setas */
+@media (max-width: 720px) {
+  /* aplica a todos os carrosseis ativos */
+  #projeto-modal.carousel-active .modal-imagem {
+    height: 320px;
+    max-height: 60vh;
+  }
+  #projeto-modal.carousel-active .carousel-prev {
+    left: 8px; /* Traz as setas para dentro */
+  }
+  #projeto-modal.carousel-active .carousel-next {
+    right: 8px; /* Traz as setas para dentro */
+  }
+}
+
+/* título e descrição */
+#modal-titulo {
+  font-size: 1.6rem;
+  color: var(--primaria);
+  margin-top: 0.2rem;
+}
+#modal-descricao {
+  color: rgba(226, 232, 240, 0.95);
+  line-height: 1.4;
+}
+#modal-tecnologias {
+  color: rgba(226, 232, 240, 0.8);
+  font-size: 0.95rem;
+}
+
+/* links do modal (botões) */
+.modal-links {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  flex-wrap: wrap;
+}
+.modal-links a {
+  padding: 0.55rem 0.9rem;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(90deg, var(--primaria), var(--secundaria));
+  border: none;
+  transition: transform 0.12s ease;
+}
+.modal-links a:hover {
+  transform: translateY(-3px);
+}
+
+/* botão fechar do modal (canto superior direito) */
+.modal-fechar {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--claro);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.12s ease, transform 0.12s ease;
+  z-index: 10; /* Garante que fique acima da imagem */
+}
+.modal-fechar:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+}
+
+/* ===================== Ajustes responsivos ===================== */
+@media (max-width: 720px) {
+  .projetos-controles {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  #filtro-tec {
+    width: 100%;
+  }
+  .modal-imagem {
+    height: 200px;
+  }
+  .modal-conteudo {
+    padding: 0.8rem;
+    border-radius: 12px;
+    
+    /* Remove o padding lateral em telas pequenas */
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+  
+  /* Traz as setas para dentro em telas pequenas */
+  #projeto-modal.carousel-active .carousel-prev {
+    left: 8px;
+  }
+  #projeto-modal.carousel-active .carousel-next {
+    right: 8px;
+  }
+  
+  /* reduzir o espaço reservado para tags */
+  .tags-tecnologias {
+    min-height: 28px;
+  }
+
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* ===================== Pequenas correções/integrações visuais ===================== */
+/* garantir que ações do projeto não estoure o card */
+.projetos-card .acoes-projeto {
+  padding-top: 0.6rem;
+}
+
+/* suavizar transições visuais do card (já ajustado acima) */
+
+/* extras opcionais: micro-animar a barra de ações no hover do card */
+.projetos-card:hover .acoes-projeto {
+  transform: translateY(0);
+}
+
+/* ajuste para evitar overflow na descrição longa */
+.paragrafo-projetos {
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* limita linhas visíveis */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* acessibilidade: foco em links normais do modal */
+.modal-links a:focus,
+.modal-fechar:focus {
+  outline: 3px solid rgba(124, 58, 237, 0.18);
+  outline-offset: 3px;
+}
