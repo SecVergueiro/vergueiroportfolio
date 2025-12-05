@@ -296,5 +296,25 @@
     "linkHospedagem": "https://alurabooksangular.vercel.app/cadastro",
     "linkRepositorio": "https://github.com/SecVergueiro/alurabooksangular",
     "featured": true
-  }
+  },
+
+  {
+  "id": "lista-de-compras-angular",
+  "titulo": "Lista de Compras (Angular)",
+  "resumo": "Aplicação CRUD em Angular para gerenciar lista de itens com persistência local.",
+  "descricao": "Projeto de Lista de Compras reescrito com Angular, focando na arquitetura com Componentes, Serviços e persistência de dados no Local Storage.",
+  "descricao_detalhada": "SPA construída com Angular e TypeScript para gerenciar itens de uma lista de compras. O projeto demonstra o uso de Componentes para estruturar a UI, Serviços injetáveis para encapsular a lógica de negócios e persistência de dados no Local Storage para manter a lista entre sessões. É ideal para mostrar domínio dos fundamentos do Angular, incluindo *data binding* e *state management* básico.",
+  "tecnologias": [
+    "Angular",
+    "TypeScript",
+    "CSS",
+    "HTML",
+    "Local Storage"
+  ],
+  "thumbnail": "./img/listadecomprarangular.jpeg",
+  "imagem": "./img/listadecomprarangular.jpeg",
+  "linkHospedagem": "https://listadecompras-angular.vercel.app",
+  "linkRepositorio": "https://github.com/SecVergueiro/listadecomprasAngular",
+  "featured": true
+}
 ]
