@@ -1,0 +1,51 @@
+.exp {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.inner { max-width: 1200px; margin: 0 auto; }
+
+.timeline {
+  position: relative; margin-top: 3rem; padding-left: 2rem;
+}
+.timeline::before {
+  content: ''; position: absolute; left: 0; top: .4rem; bottom: 0; width: 1px;
+  background: linear-gradient(180deg, var(--red), var(--purple2) 60%, transparent);
+}
+
+.item {
+  position: relative; padding: 0 0 2.8rem 2.2rem;
+  opacity: 0; transform: translateX(-16px);
+  transition: opacity .6s, transform .6s;
+}
+.item.visible { opacity: 1; transform: translateX(0); }
+.item:last-child { padding-bottom: 0; }
+.item::before {
+  content: ''; position: absolute;
+  left: -.38rem; top: .35rem;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 8px var(--red), 0 0 16px rgba(204,26,26,.3);
+  border: 1px solid var(--black);
+}
+
+.period {
+  font-family: 'Saira Condensed', sans-serif; font-weight: 600; font-size: .68rem;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--red); margin-bottom: .3rem;
+}
+.role {
+  font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; letter-spacing: .05em;
+  color: var(--white); line-height: 1.1; margin-bottom: .1rem;
+}
+.company {
+  font-family: 'Saira Condensed', sans-serif; font-weight: 600; font-size: .82rem;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--silver);
+}
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem; }
+.tag {
+  font-family: 'Saira Condensed', sans-serif; font-weight: 600; font-size: .6rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: .18rem .55rem;
+  border: 1px solid rgba(96,48,168,.35);
+  color: var(--purple2); background: rgba(96,48,168,.06);
+}

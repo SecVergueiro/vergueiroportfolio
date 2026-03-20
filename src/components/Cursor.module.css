@@ -1,0 +1,18 @@
+.dot {
+  position: fixed; z-index: 9999; pointer-events: none;
+  width: 12px; height: 12px;
+  background: var(--red2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width .15s, height .15s, background .15s;
+  mix-blend-mode: screen;
+  box-shadow: 0 0 12px var(--red2), 0 0 30px rgba(255,42,42,.4);
+}
+
+.ring {
+  position: fixed; z-index: 9998; pointer-events: none;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(255,42,42,.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}

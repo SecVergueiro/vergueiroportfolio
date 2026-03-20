@@ -1,0 +1,237 @@
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 7rem 4rem 4rem;
+  gap: 2rem;
+  position: relative; overflow: hidden;
+}
+
+/* energia reiatsu */
+.reiatsu { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.reiatsu::before {
+  content: '';
+  position: absolute; bottom: -20%; left: -10%;
+  width: 60vw; height: 60vw;
+  background: radial-gradient(ellipse at center, rgba(61,26,110,.25) 0%, transparent 65%);
+  animation: pulse 6s ease-in-out infinite;
+}
+.reiatsu::after {
+  content: '';
+  position: absolute; top: -20%; right: -10%;
+  width: 50vw; height: 50vw;
+  background: radial-gradient(ellipse at center, rgba(138,10,10,.2) 0%, transparent 60%);
+  animation: pulse 6s 2s ease-in-out infinite reverse;
+}
+@keyframes pulse { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.15)} }
+
+.left {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; gap: 1.6rem;
+}
+
+/* linha topo */
+.topRow { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+
+.function {
+  font-family: 'Saira Condensed', sans-serif; font-weight: 600; font-size: .75rem;
+  letter-spacing: .35em; text-transform: uppercase; color: var(--red);
+  display: flex; align-items: center; gap: .6rem; margin: 0;
+}
+.function::before {
+  content: ''; display: block; width: 40px; height: 1px;
+  background: linear-gradient(90deg, var(--blood), var(--red2));
+  box-shadow: 0 0 6px var(--red);
+}
+
+/* badge disponibilidade */
+.badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: .7rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: #22c55e;
+  background: rgba(34,197,94,.08);
+  border: 1px solid rgba(34,197,94,.25);
+  padding: .35rem .9rem;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+}
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #22c55e; box-shadow: 0 0 6px #22c55e;
+  flex-shrink: 0;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.7)}
+}
+
+/* nome */
+.name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 9vw, 9.5rem);
+  line-height: .88; letter-spacing: .03em;
+}
+.n1 {
+  display: block; color: var(--white);
+  text-shadow: 3px 3px 0 rgba(0,0,0,.8), 0 0 40px rgba(255,42,42,.15);
+}
+.n2 {
+  display: block; color: transparent;
+  -webkit-text-stroke: 1.5px var(--white);
+  position: relative;
+}
+.n2::before {
+  content: attr(data-text);
+  position: absolute; left: 0; top: 0;
+  color: var(--red); -webkit-text-stroke: 0;
+  clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%);
+  transform: translateX(-3px);
+  animation: glitch1 4s 1s infinite; opacity: .7;
+}
+.n2::after {
+  content: attr(data-text);
+  position: absolute; left: 0; top: 0;
+  color: var(--neon); -webkit-text-stroke: 0;
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  transform: translateX(3px);
+  animation: glitch2 4s 1.5s infinite; opacity: .5;
+}
+@keyframes glitch1 {
+  0%,90%,100%{transform:translateX(-3px);opacity:.7}
+  92%{transform:translateX(6px) skewX(5deg);opacity:.9}
+  94%{transform:translateX(-6px);opacity:.5}
+  96%{transform:translateX(0);opacity:0}
+}
+@keyframes glitch2 {
+  0%,90%,100%{transform:translateX(3px);opacity:.5}
+  93%{transform:translateX(-8px) skewX(-4deg);opacity:.8}
+  95%{transform:translateX(4px);opacity:.3}
+  97%{transform:translateX(0);opacity:0}
+}
+
+.title {
+  font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: 1.1rem;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--silver);
+  display: flex; align-items: center; gap: .8rem;
+}
+.title::after {
+  content: ''; flex: 0 0 60px; height: 1px;
+  background: linear-gradient(90deg, var(--purple2), transparent);
+}
+
+.tagline {
+  font-family: 'Rajdhani', sans-serif; font-style: italic; font-size: 1.1rem;
+  color: var(--muted); padding-left: 1.2rem;
+  border-left: 2px solid var(--red);
+  max-width: 440px; position: relative;
+}
+.tagline::before {
+  content: '"'; position: absolute; top: -.5rem; left: -.2rem;
+  font-size: 3rem; color: var(--blood); opacity: .3;
+  font-style: normal; font-family: 'Bebas Neue', sans-serif; line-height: 1;
+}
+
+.btns { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .4rem; }
+
+.socials { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .2rem; }
+.socials a {
+  font-family: 'Saira Condensed', sans-serif; font-weight: 600; font-size: .7rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none;
+  display: flex; align-items: center; gap: .4rem;
+  transition: color .2s;
+}
+.socials a:hover { color: var(--red2); }
+.socials svg { width: 14px; height: 14px; fill: currentColor; }
+
+/* Foto */
+.right {
+  position: relative; z-index: 2;
+  display: flex; justify-content: center; align-items: center;
+}
+.photoWrap {
+  position: relative; width: 360px; height: 400px;
+}
+.photoGrid {
+  position: absolute; inset: -30px; z-index: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,.025) 40px, rgba(255,255,255,.025) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,.025) 40px, rgba(255,255,255,.025) 41px);
+}
+.photoGlow {
+  position: absolute; inset: -40px; z-index: 0;
+  background: radial-gradient(ellipse at 50% 60%, rgba(138,10,10,.35) 0%, rgba(61,26,110,.25) 40%, transparent 70%);
+  animation: pulse 5s ease-in-out infinite;
+}
+.photoFrame {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+}
+.photoFrame::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 40px; height: 40px;
+  border-top: 2px solid var(--red); border-left: 2px solid var(--red);
+  box-shadow: -4px -4px 12px rgba(204,26,26,.3);
+}
+.photoFrame::after {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 40px; height: 40px;
+  border-bottom: 2px solid var(--red); border-right: 2px solid var(--red);
+  box-shadow: 4px 4px 12px rgba(204,26,26,.3);
+}
+.cTr {
+  position: absolute; top: 0; right: 0; width: 20px; height: 20px;
+  border-top: 1px solid var(--purple2); border-right: 1px solid var(--purple2);
+}
+.cBl {
+  position: absolute; bottom: 0; left: 0; width: 20px; height: 20px;
+  border-bottom: 1px solid var(--purple2); border-left: 1px solid var(--purple2);
+}
+.photo {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  filter: grayscale(20%) contrast(1.1) brightness(.95);
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  display: block; position: relative; z-index: 1;
+  animation: float 7s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+.number {
+  position: absolute; bottom: -1rem; left: -1.5rem; z-index: 3;
+  font-family: 'Bebas Neue', sans-serif; font-size: 8rem; line-height: 1;
+  color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.06);
+  pointer-events: none; animation: float 7s 1s ease-in-out infinite;
+}
+
+/* ── Hero entrada ── */
+.left > * {
+  opacity: 0;
+  animation: hIn .7s ease forwards;
+}
+.left > *:nth-child(1) { animation-delay: .05s; }
+.left > *:nth-child(2) { animation-delay: .18s; }
+.left > *:nth-child(3) { animation-delay: .35s; }
+.left > *:nth-child(4) { animation-delay: .5s; }
+.left > *:nth-child(5) { animation-delay: .65s; }
+.left > *:nth-child(6) { animation-delay: .8s; }
+@keyframes hIn { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:translateX(0)} }
+
+.photoWrap {
+  opacity: 0;
+  animation: photoIn .8s .15s cubic-bezier(.34,1.3,.64,1) forwards;
+}
+@keyframes photoIn { from{opacity:0;transform:translateX(40px) rotate(3deg)} to{opacity:1;transform:translateX(0) rotate(0)} }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; padding: 8rem 3rem 4rem; text-align: center; }
+  .right { order: -1; }
+  .left { align-items: center; }
+  .tagline { margin: 0 auto; }
+  .topRow { justify-content: center; }
+  .function::before { display: none; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 7rem 1.5rem 3rem; }
+  .photoWrap { width: 260px; height: 290px; }
+}
