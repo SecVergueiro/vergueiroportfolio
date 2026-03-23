@@ -40,6 +40,13 @@
 .links li a:hover { color: var(--white); }
 .links li a:hover::after { width: 100%; }
 
+/* Direita da nav — lang + hamburguer */
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+
 .langBtn {
   font-family: 'Saira Condensed', sans-serif; font-weight: 700; font-size: .72rem;
   letter-spacing: .2em; text-transform: uppercase;
@@ -56,11 +63,64 @@
   background: rgba(204,26,26,.1);
 }
 
+/* Hamburguer — escondido no desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: .3rem;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+.hBarTop    { transform: translateY(7px) rotate(45deg) !important; }
+.hBarMid    { opacity: 0 !important; }
+.hBarBottom { transform: translateY(-7px) rotate(-45deg) !important; }
+
+/* Menu mobile */
+.mobileMenu {
+  display: none;
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  background: rgba(6,6,8,.97);
+  border-bottom: 1px solid var(--line);
+  flex-direction: column;
+  padding: 1rem 0;
+  backdrop-filter: blur(16px);
+  z-index: 499;
+}
+.mobileLink {
+  font-family: 'Saira Condensed', sans-serif;
+  font-weight: 600; font-size: .9rem;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--silver); text-decoration: none;
+  padding: .85rem 2rem;
+  border-bottom: 1px solid var(--line);
+  transition: color .2s, background .2s;
+}
+.mobileLink:last-child { border-bottom: none; }
+.mobileLink:hover { color: var(--white); background: rgba(204,26,26,.08); }
+
+/* Breakpoints */
 @media (max-width: 1024px) {
   .nav { padding: .9rem 2rem; }
   .links { gap: 1.5rem; }
 }
+
+@media (max-width: 768px) {
+  .links     { display: none; }
+  .hamburger { display: flex; }
+  .mobileMenu{ display: flex; }
+}
+
 @media (max-width: 640px) {
-  .links li a { font-size: .68rem; letter-spacing: .15em; }
-  .links { gap: 1rem; }
+  .nav { padding: .9rem 1.5rem; }
 }
