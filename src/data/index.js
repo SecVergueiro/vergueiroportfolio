@@ -1,8 +1,8 @@
 export const SISVAC = {
   id: 'sisvac',
-  badge: 'Vitrine do Portfolio',
+  badge: 'Vitrine do Portfólio',
   titulo: 'SISVAC',
-  descricao: 'Sistema de Gestao de Ferias e Colaboradores — reformulacao do TCC. Full Stack com autenticacao, controle de permissoes, CRUD completo e banco de dados funcional ao vivo. Voce pode criar uma conta e testar.',
+  descricao: 'Sistema de Gestão de Férias e Colaboradores — reformulação do TCC. Full Stack com autenticação, controle de permissões, CRUD completo e banco de dados funcional ao vivo. Você pode criar uma conta e testar.',
   tecnologias: ['React', 'CSS', 'JavaScript', 'TypeScript', 'NodeJS', 'Supabase', 'PostgreSQL', 'API REST', 'NestJS', 'Next.js'],
   thumbnail: '/img/sisvacv2_0.png',
   imagens: [
@@ -16,10 +16,32 @@ export const SISVAC = {
 
 export const PROJETOS = [
   {
+    id: 'transkriptorsec',
+    titulo: 'TranskriptorSec',
+    resumo: 'Transcrição de áudio com Whisper rodando dentro do navegador — o arquivo não vai para nenhuma API.',
+    descricao: 'Transcritor que roda o modelo de IA no próprio navegador, acelerado por WebGPU com queda automática para WASM. O áudio nunca sai da máquina de quem usa e o custo de operação é zero, sem chave de API. Todo o processamento fica num Web Worker, então a interface segue responsiva durante um áudio longo. Em cima disso há CRUD completo com Prisma e SQLite (arquivo local ou Turso), player com forma de onda extraída do PCM, timestamps clicáveis e exportação em SRT, VTT e texto. A separação de falantes foi medida com gabarito e o resultado ficou perto do acaso — está documentado no README como limitação em vez de ser vendida como recurso.',
+    tecnologias: ['Next.js', 'React', 'TypeScript', 'WebGPU', 'Web Worker', 'Prisma', 'Turso', 'Tailwind'],
+    thumbnail: '/img/transkriptorsec2.png',
+    imagens: ['/img/transkriptorsec2.png', '/img/transkriptorsec.png'],
+    linkHospedagem: 'https://transkriptorsec.vercel.app',
+    linkRepositorio: 'https://github.com/SecVergueiro/transkriptorsec',
+  },
+  {
+    id: 'fitsec',
+    titulo: 'FitSec',
+    resumo: 'PWA de treino que funciona sem internet: escrita otimista, fila de sincronização e timer nativo do iPhone.',
+    descricao: 'Registro de treino pensado para um ambiente hostil a software: academia sem sinal, celular bloqueado entre séries e o iOS matando o PWA a cada troca de app. Isso torna o cold start o caminho mais percorrido, não o mais raro. Leitura é cache-first em duas passadas (IndexedDB primeiro, servidor depois, sem spinner) e o caminho crítico do treino não espera a rede: grava local, devolve na hora e sai por uma fila de sincronização. Como navigator.onLine mente no 4G ruim, leitura e escrita têm teto próprio de 6 segundos — estourar manda para a fila, não para uma tela de erro. O descanso é enviado ao timer nativo do iPhone via URL scheme do app Atalhos, já que um PWA não alcança Live Activities. 108 testes cobrem justamente a fila e os timers.',
+    tecnologias: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'IndexedDB', 'PWA', 'Service Worker', 'Recharts'],
+    thumbnail: '/img/fitsec.png',
+    imagens: ['/img/fitsec.png'],
+    linkHospedagem: 'https://fitsec.vercel.app',
+    linkRepositorio: 'https://github.com/SecVergueiro/fitsec',
+  },
+  {
     id: 'meteora',
     titulo: 'Meteora',
     resumo: 'E-commerce de moda com carrinho completo, Context API e useReducer.',
-    descricao: 'E-commerce front-end com React e Vite focado em gerenciamento de estado global. Implementa carrinho completo (adicionar, remover, limpar) usando Context API + useReducer sem Redux. useMemo aplicado para evitar re-renders desnecessarios em listas. Layout com Bootstrap para responsividade em todos os devices. Projeto seguiu prototipo de alta fidelidade no Figma, praticando o fluxo real do design ao deploy.',
+    descricao: 'E-commerce front-end com React e Vite focado em gerenciamento de estado global. Implementa carrinho completo (adicionar, remover, limpar) usando Context API + useReducer sem Redux. useMemo aplicado para evitar re-renders desnecessários em listas. Layout com Bootstrap para responsividade em todos os devices. Projeto seguiu protótipo de alta fidelidade no Figma, praticando o fluxo real do design ao deploy.',
     tecnologias: ['React', 'Vite', 'Bootstrap', 'Context API', 'JavaScript', 'CSS'],
     thumbnail: '/img/meteoraimg.jpeg',
     imagens: ['/img/meteoraimg.jpeg'],
@@ -30,7 +52,7 @@ export const PROJETOS = [
     id: 'memoteca-ang',
     titulo: 'Memoteca (Angular)',
     resumo: 'CRUD completo em Angular 14+ consumindo API REST mock com JSON Server.',
-    descricao: 'SPA de gerenciamento de pensamentos construida com Angular 14 e TypeScript. CRUD completo usando HttpClient e servicos Angular com back-end simulado via JSON Server. Ambiente configurado com concurrently para rodar front e API simultaneamente. Proxy do Angular CLI configurado para contornar CORS. Usa Observables e RxJS para manipulacao assincrona e roteamento dinamico entre listagem e formulario.',
+    descricao: 'SPA de gerenciamento de pensamentos construída com Angular 14 e TypeScript. CRUD completo usando HttpClient e serviços Angular com back-end simulado via JSON Server. Ambiente configurado com concurrently para rodar front e API simultaneamente. Proxy do Angular CLI configurado para contornar CORS. Usa Observables e RxJS para manipulação assíncrona e roteamento dinâmico entre listagem e formulário.',
     tecnologias: ['Angular', 'TypeScript', 'NodeJS', 'JSON Server', 'RxJS', 'HTML', 'CSS'],
     thumbnail: '/img/memotecaangular.jpeg',
     imagens: ['/img/memotecaangular.jpeg', '/img/memotecaangular2.jpeg', '/img/memotecaangular3.jpeg', '/img/memotecaangularexcluir.jpeg'],
@@ -40,8 +62,8 @@ export const PROJETOS = [
   {
     id: 'alurabooks-ang',
     titulo: 'Alura Books (Angular)',
-    resumo: 'Refatoracao do Alura Books como SPA Angular com componentes modulares e TypeScript.',
-    descricao: 'Evolucao do Alura Books original: de HTML/CSS/JS estatico para SPA componentizada com Angular e TypeScript. Interface decomposta em componentes modulares independentes. Servicos injetaveis via DI do Angular gerenciam o fluxo de dados. TypeScript garante tipagem forte. Demonstra migracao de projeto legado para arquitetura moderna de componentes.',
+    resumo: 'Refatoração do Alura Books como SPA Angular com componentes modulares e TypeScript.',
+    descricao: 'Evolução do Alura Books original: de HTML/CSS/JS estático para SPA componentizada com Angular e TypeScript. Interface decomposta em componentes modulares independentes. Serviços injetáveis via DI do Angular gerenciam o fluxo de dados. TypeScript garante tipagem forte. Demonstra migração de projeto legado para arquitetura moderna de componentes.',
     tecnologias: ['Angular', 'TypeScript', 'CSS', 'HTML'],
     thumbnail: '/img/alurabooksangular.jpg',
     imagens: ['/img/alurabooksangular.jpg'],
@@ -51,8 +73,8 @@ export const PROJETOS = [
   {
     id: 'lista-ang',
     titulo: 'Lista de Compras (Angular)',
-    resumo: 'CRUD em Angular com Componentes, Servicos e persistencia em LocalStorage.',
-    descricao: 'Lista de compras com Angular e TypeScript focada nos fundamentos do framework. Logica de negocio separada da UI via Servico injetavel que encapsula CRUD e persistencia no LocalStorage. Data binding bidirecional sincroniza formulario e lista em tempo real. ngFor e ngIf para renderizacao condicional reativa.',
+    resumo: 'CRUD em Angular com Componentes, Serviços e persistência em LocalStorage.',
+    descricao: 'Lista de compras com Angular e TypeScript focada nos fundamentos do framework. Lógica de negócio separada da UI via Serviço injetável que encapsula CRUD e persistência no LocalStorage. Data binding bidirecional sincroniza formulário e lista em tempo real. ngFor e ngIf para renderização condicional reativa.',
     tecnologias: ['Angular', 'TypeScript', 'Local Storage', 'HTML', 'CSS'],
     thumbnail: '/img/listadecomprarangular.jpeg',
     imagens: ['/img/listadecomprarangular.jpeg'],
@@ -62,8 +84,8 @@ export const PROJETOS = [
   {
     id: 'space-app',
     titulo: 'Space App',
-    resumo: 'Galeria de fotos do espaco com React e Vite, focada em componentizacao.',
-    descricao: 'SPA de galeria espacial com Vite e React. Composicao de componentes reutilizaveis, estado local com useState e useEffect, estrutura de pastas escalavel. Vite garante ciclo de dev rapido com HMR e build otimizado para producao.',
+    resumo: 'Galeria de fotos do espaço com React e Vite, focada em componentização.',
+    descricao: 'SPA de galeria espacial com Vite e React. Composição de componentes reutilizáveis, estado local com useState e useEffect, estrutura de pastas escalável. Vite garante ciclo de dev rápido com HMR e build otimizado para produção.',
     tecnologias: ['React', 'Vite', 'JavaScript', 'CSS'],
     thumbnail: '/img/spaceappimg.jpeg',
     imagens: ['/img/spaceappimg.jpeg'],
@@ -74,7 +96,7 @@ export const PROJETOS = [
     id: 'organo',
     titulo: 'Organo',
     resumo: 'App React para cadastrar colaboradores e organizar times.',
-    descricao: 'Aplicacao React para gestao visual de times. Formulario controlado para adicionar colaboradores com nome, cargo, foto e time. Dados renderizados em cards agrupados por equipe. Estado com useState e prop drilling consciente.',
+    descricao: 'Aplicação React para gestão visual de times. Formulário controlado para adicionar colaboradores com nome, cargo, foto e time. Dados renderizados em cards agrupados por equipe. Estado com useState e prop drilling consciente.',
     tecnologias: ['React', 'JavaScript', 'CSS'],
     thumbnail: '/img/organoimage.png',
     imagens: ['/img/organoimage.png', '/img/organoimage2.jpeg'],
@@ -84,8 +106,8 @@ export const PROJETOS = [
   {
     id: 'cinetag',
     titulo: 'CineTag',
-    resumo: 'SPA React para catalogar e favoritar videos com roteamento e API mock.',
-    descricao: 'Plataforma de catalogacao de videos como SPA com React. Navegacao com React Router e rotas aninhadas. Estado global de favoritos via Context API. Estilos isolados com CSS Modules. Dados via API REST mock com MyJsonServer.',
+    resumo: 'SPA React para catalogar e favoritar vídeos com roteamento e API mock.',
+    descricao: 'Plataforma de catalogação de vídeos como SPA com React. Navegação com React Router e rotas aninhadas. Estado global de favoritos via Context API. Estilos isolados com CSS Modules. Dados via API REST mock com MyJsonServer.',
     tecnologias: ['React', 'Context API', 'React Router', 'CSS Modules', 'JavaScript'],
     thumbnail: '/img/cinetagimg.jpg',
     imagens: ['/img/cinetagimg.jpg'],
@@ -95,8 +117,8 @@ export const PROJETOS = [
   {
     id: 'vidflow',
     titulo: 'VidFlow',
-    resumo: 'Back-end Node.js puro com rotas HTTP e integracao com front-end estatico.',
-    descricao: 'Aplicacao full stack com back-end em Node.js sem framework, expondo rotas HTTP para dados de videos. Front-end estatico consome via fetch. ESLint garante consistencia. Mostra fundamentos do servidor HTTP antes de abstrair com Express.',
+    resumo: 'Back-end Node.js puro com rotas HTTP e integração com front-end estático.',
+    descricao: 'Aplicação full stack com back-end em Node.js sem framework, expondo rotas HTTP para dados de vídeos. Front-end estático consome via fetch. ESLint garante consistência. Mostra fundamentos do servidor HTTP antes de abstrair com Express.',
     tecnologias: ['NodeJS', 'JavaScript', 'CSS', 'ESLint'],
     thumbnail: '/img/vidflow.jpeg',
     imagens: ['/img/vidflow.jpeg'],
@@ -106,8 +128,8 @@ export const PROJETOS = [
   {
     id: 'fokus',
     titulo: 'Fokus',
-    resumo: 'Timer Pomodoro com JavaScript puro e micro-interacoes.',
-    descricao: 'Produtividade baseada em Pomodoro sem frameworks externos. Tres modos (foco, pausa curta, pausa longa) com transicao de estado via DOM. Micro-interacoes: troca de fundo, som e animacao de progresso. Demonstra setInterval/clearInterval e atualizacao reativa sem React.',
+    resumo: 'Timer Pomodoro com JavaScript puro e micro-interações.',
+    descricao: 'Produtividade baseada em Pomodoro sem frameworks externos. Três modos (foco, pausa curta, pausa longa) com transição de estado via DOM. Micro-interações: troca de fundo, som e animação de progresso. Demonstra setInterval/clearInterval e atualização reativa sem React.',
     tecnologias: ['JavaScript', 'HTML', 'CSS'],
     thumbnail: '/img/fokusimg.jpeg',
     imagens: ['/img/fokusimg.jpeg'],
@@ -117,8 +139,8 @@ export const PROJETOS = [
   {
     id: 'alurabooks',
     titulo: 'Alura Books',
-    resumo: 'Catalogo de livros com filtros por categoria e layout em cards.',
-    descricao: 'Interface de livraria com catalogo em cards e filtros por categoria. Dados carregados via fetch de JSON local. Filtros manipulam o DOM dinamicamente para exibir e ocultar cards por categoria.',
+    resumo: 'Catálogo de livros com filtros por categoria e layout em cards.',
+    descricao: 'Interface de livraria com catálogo em cards e filtros por categoria. Dados carregados via fetch de JSON local. Filtros manipulam o DOM dinamicamente para exibir e ocultar cards por categoria.',
     tecnologias: ['HTML', 'JavaScript', 'CSS'],
     thumbnail: '/img/alurabooks.jpeg',
     imagens: ['/img/alurabooks.jpeg'],
@@ -129,7 +151,7 @@ export const PROJETOS = [
     id: 'codeconnect',
     titulo: 'CodeConnect',
     resumo: 'Feed de posts com consumo de API externa usando async/await.',
-    descricao: 'Aplicacao que consome API externa para popular feed de posts. Comunicacao via async/await com try/catch tratando erros, exibindo loading e mensagem de erro em caso de falha. Demonstra controle de fluxo assicrono e Promise handling.',
+    descricao: 'Aplicação que consome API externa para popular feed de posts. Comunicação via async/await com try/catch tratando erros, exibindo loading e mensagem de erro em caso de falha. Demonstra controle de fluxo assíncrono e Promise handling.',
     tecnologias: ['HTML', 'JavaScript', 'CSS'],
     thumbnail: '/img/codeconnect.jpeg',
     imagens: ['/img/codeconnect.jpeg'],
@@ -139,8 +161,8 @@ export const PROJETOS = [
   {
     id: 'lista',
     titulo: 'Lista de Compras',
-    resumo: 'CRUD de lista com persistencia em LocalStorage.',
-    descricao: 'CRUD de lista de compras com persistencia no LocalStorage. Itens mantidos apos fechar o navegador. Operacoes de criar, editar, marcar e remover com DOM puro. Dados serializados com JSON.stringify/parse.',
+    resumo: 'CRUD de lista com persistência em LocalStorage.',
+    descricao: 'CRUD de lista de compras com persistência no LocalStorage. Itens mantidos após fechar o navegador. Operações de criar, editar, marcar e remover com DOM puro. Dados serializados com JSON.stringify/parse.',
     tecnologias: ['HTML', 'JavaScript', 'CSS', 'LocalStorage'],
     thumbnail: '/img/listadecompras.jpeg',
     imagens: ['/img/listadecompras.jpeg'],
@@ -150,13 +172,13 @@ export const PROJETOS = [
   {
     id: 'lol-login',
     titulo: 'LoL Login Screen',
-    resumo: 'Recriacao da tela de login do League of Legends em CSS puro.',
-    descricao: 'Recriacao fiel da tela de login do LoL focada em CSS avancado. Posicionamento, gradientes, animacoes @keyframes e responsividade sem frameworks. Demonstra traducao de design complexo em CSS preciso.',
+    resumo: 'Recriação da tela de login do League of Legends em CSS puro.',
+    descricao: 'Recriação fiel da tela de login do LoL focada em CSS avançado. Posicionamento, gradientes, animações @keyframes e responsividade sem frameworks. Demonstra tradução de design complexo em CSS preciso.',
     tecnologias: ['HTML', 'CSS', 'JavaScript'],
     thumbnail: '/img/loginlol.jpeg',
     imagens: ['/img/loginlol.jpeg'],
-    linkHospedagem: 'https://login-lol-sec.vercel.app',
-    linkRepositorio: 'https://github.com/SecVergueiro/login-lol',
+    linkHospedagem: 'https://login-screen-kappa-taupe.vercel.app',
+    linkRepositorio: 'https://github.com/SecVergueiro/login-screen',
   },
 ]
 
@@ -208,7 +230,7 @@ export const STACK = {
     { nome: 'Vercel',      icon: 'devicon-vercel-original',      cor: '#cccccc' },
     { nome: 'n8n',         icon: null, img: '/img/n8n-logo.svg', cor: '#EA4B71' },
     { nome: 'Supabase', icon: 'devicon-supabase-plain', cor: '#3ECF8E' },
-    
+
   ],
 }
 
