@@ -16,6 +16,17 @@ export const SISVAC = {
 
 export const PROJETOS = [
   {
+    id: 'queimadas-am',
+    titulo: 'Queimadas AM',
+    resumo: 'Painel de focos de calor no Amazonas com dado aberto do INPE — Angular 22, signals e zoneless, sem back-end.',
+    descricao: 'Painel dos focos de calor detectados por satélite no Amazonas, lendo o CSV público do INPE direto no navegador: o servidor libera CORS, então não há back-end, banco nem chave de API. O trabalho de verdade está no dado, que chega sujo e muda sem aviso — `lat` e `lon` vêm com espaço à esquerda, o horário é GMT num estado que é UTC−4, e o mesmo incêndio aparece como várias detecções porque vários satélites o enxergam. Medindo o arquivo linha por linha descobri que `risco_fogo`, `precipitacao` e `numero_dias_sem_chuva` vêm vazias em dias inteiros, inclusive no dia mais recente, que é o que o painel mostra — então a intensidade se apoia em FRP, preenchido em ~97%, e ausência de dado aparece como ausência, nunca como zero. O parser é uma função pura com 23 testes, um deles falhando de propósito se o INPE mudar o cabeçalho, mais um teste de contrato contra o servidor real que roda fora da suíte para instabilidade da fonte não virar build vermelho. A interface trata os modos de falha em vez de mostrar tela branca: arquivo do dia ainda não publicado, formato alterado, dia sem foco e FRP parcial.',
+    tecnologias: ['Angular', 'TypeScript', 'Signals', 'Zoneless', 'Vitest', 'CSV', 'Dados Abertos'],
+    thumbnail: '/img/queimadas-am.png',
+    imagens: ['/img/queimadas-am.png', '/img/queimadas-am2.png'],
+    linkHospedagem: 'https://queimadas-am-sec.vercel.app',
+    linkRepositorio: 'https://github.com/SecVergueiro/queimadas-am-sec',
+  },
+  {
     id: 'transkriptorsec',
     titulo: 'TranskriptorSec',
     resumo: 'Transcrição de áudio com Whisper rodando dentro do navegador — o arquivo não vai para nenhuma API.',

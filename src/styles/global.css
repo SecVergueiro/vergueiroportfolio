@@ -33,7 +33,13 @@ body {
   font-size: 17px;
   line-height: 1.65;
   overflow-x: hidden;
-  cursor: none;
+}
+
+/* O cursor nativo só some onde o customizado entra no lugar dele. Fora dessa
+   condição — toque, ou quem pediu menos movimento — esconder o nativo deixaria
+   a pessoa sem cursor nenhum. */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body { cursor: none; }
 }
 
 /* ── Scrollbar ── */

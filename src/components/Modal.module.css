@@ -1,6 +1,9 @@
 .overlay {
   position: fixed; inset: 0; z-index: 600;
-  background: rgba(6,6,8,.92); backdrop-filter: blur(10px);
+  /* Sem backdrop-filter: as partículas continuam animando atrás do overlay, e
+     desfocar 8% de fundo a 60 fps travava a página justamente com o modal
+     aberto — que é quando a pessoa está lendo. */
+  background: rgba(6,6,8,.92);
   display: flex; align-items: center; justify-content: center; padding: 2rem;
   animation: fadeIn .25s ease;
 }

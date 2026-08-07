@@ -112,7 +112,10 @@ export default function Projetos() {
                 role="button" tabIndex={0} aria-label="Ver detalhes do SISVAC"
                 onKeyDown={e => e.key === 'Enter' && setModal(sisvacTraduzido)}>
                 <div className={styles.vitImg}>
-                  <img src={SISVAC.thumbnail || SISVAC.imagens?.[0]} alt="SISVAC" />
+                  {/* 1,5 MB de PNG: sem lazy/async o decode acontece na thread
+                      principal e trava a página antes de a seção aparecer. */}
+                  <img src={SISVAC.thumbnail || SISVAC.imagens?.[0]} alt="SISVAC"
+                    loading="lazy" decoding="async" />
                 </div>
                 <div className={styles.vitInfo}>
                   <span className={styles.vitBadge}>{sisvacTraduzido.badge}</span>

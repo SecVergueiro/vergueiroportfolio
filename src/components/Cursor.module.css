@@ -1,18 +1,26 @@
+/* Centralização por margem negativa, e não por `translate(-50%,-50%)`, para
+   que o `transform` fique livre — o JS escreve só um translate3d nele. */
+
 .dot {
-  position: fixed; z-index: 9999; pointer-events: none;
+  position: fixed; top: 0; left: 0;
+  z-index: 9999; pointer-events: none;
   width: 12px; height: 12px;
+  margin: -6px 0 0 -6px;
   background: var(--red2);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width .15s, height .15s, background .15s;
-  mix-blend-mode: screen;
-  box-shadow: 0 0 12px var(--red2), 0 0 30px rgba(255,42,42,.4);
+  /* Sem `mix-blend-mode: screen`: o modo de mesclagem obrigava o navegador a
+     recompor tudo que estava embaixo a cada movimento do mouse. Sobre um fundo
+     quase preto o resultado visual é praticamente o mesmo. */
+  box-shadow: 0 0 10px var(--red2);
+  will-change: transform;
 }
 
 .ring {
-  position: fixed; z-index: 9998; pointer-events: none;
+  position: fixed; top: 0; left: 0;
+  z-index: 9998; pointer-events: none;
   width: 36px; height: 36px;
+  margin: -18px 0 0 -18px;
   border: 1px solid rgba(255,42,42,.5);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
+  will-change: transform;
 }

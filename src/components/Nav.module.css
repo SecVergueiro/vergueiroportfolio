@@ -3,7 +3,10 @@
   padding: .9rem 4rem;
   display: flex; justify-content: space-between; align-items: center;
   background: rgba(6,6,8,.92);
-  backdrop-filter: blur(16px);
+  /* Sem `backdrop-filter: blur(16px)`. A nav é fixa e o canvas de partículas
+     repinta atrás dela 60 vezes por segundo — cada repintura obrigava o
+     navegador a recalcular o desfoque na largura inteira da tela. E com 92% de
+     opacidade só 8% do fundo aparece: desfocar isso era invisível. */
   border-bottom: 1px solid var(--line);
 }
 .nav::after {
@@ -94,7 +97,8 @@
   border-bottom: 1px solid var(--line);
   flex-direction: column;
   padding: 1rem 0;
-  backdrop-filter: blur(16px);
+  /* 97% opaco — o desfoque aqui era literalmente imperceptível, e custava caro
+     justamente no celular, que é onde este menu existe. */
   z-index: 499;
 }
 .mobileLink {
